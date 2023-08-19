@@ -119,7 +119,7 @@ const ComponentCard = (props: any) => {
       {stateLoading ? (
         <SkeletonList />
       ) : !stateRepo.length ? (
-        <Text label="Empty repo" />
+        <Text className="mb-4" label="Empty repo" />
       ) : (
         stateRepo.map((data: any, index: any) => {
           const { name, stargazers_count, description } = data;

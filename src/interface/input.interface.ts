@@ -1,3 +1,4 @@
+import { KeyboardEventHandler } from "react";
 import { UseFormRegister } from "react-hook-form";
 
 export type Inputs = {
@@ -8,6 +9,7 @@ export type Inputs = {
 
 export interface InputInterface {
   type?: string;
+  onKeyPress?: KeyboardEventHandler<HTMLInputElement>;
   className?: string;
   label?: string;
   placeholder?: string;

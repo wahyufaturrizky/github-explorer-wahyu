@@ -1,7 +1,15 @@
 import { InputInterface } from "../interface/input.interface";
 
 const Input = (props: InputInterface) => {
-  const { label, type, className, placeholder, register, required } = props;
+  const {
+    label,
+    type,
+    className,
+    placeholder,
+    register,
+    required,
+    onKeyPress,
+  } = props;
 
   return (
     <div>
@@ -17,6 +25,7 @@ const Input = (props: InputInterface) => {
       <input
         placeholder={placeholder}
         type={type}
+        onKeyPress={onKeyPress}
         required={required}
         className={className}
         {...register("userName")}

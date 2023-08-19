@@ -1,46 +1,84 @@
-# Getting Started with Create React App
+# GitHub Repo Explorer by Username
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+GitHub Repo Explorer by Username is a web application built using ReactJS that allows users to search and list GitHub repositories of a specific user. This project utilizes various technologies and packages to create a seamless and efficient user experience.
 
-## Available Scripts
+Author: [Wahyu Fatur Rizky](https://www.linkedin.com/in/wahyu-fatur-rizky)
 
-In the project directory, you can run:
+## Table of Contents
 
-### `npm start`
+- [Features](#features)
+- [Technologies and Packages Used](#technologies-and-packages-used)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Testing](#testing)
+- [Contact](#contact)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Features
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Search for a GitHub user by username.
+- List repositories of the selected GitHub user.
+- Display repository details, such as name, description, and language.
 
-### `npm test`
+## Technologies and Packages Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This project is developed using the following technologies and packages:
 
-### `npm run build`
+- **ReactJS**: A popular JavaScript library for building user interfaces.
+- **Tailwind CSS**: A utility-first CSS framework for creating responsive and stylish designs.
+- **react-hook-form**: A library for managing form state and validation in React applications.
+- **axios**: A promise-based HTTP client for making API requests.
+- **react-query**: A data-fetching library that simplifies API data management and caching.
+- **TypeScript**: A statically typed superset of JavaScript that helps catch errors early through static analysis.
+- **Jest**: A JavaScript testing framework for writing unit tests.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone the repository to your local machine using:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   ```
+   git clone https://github.com/wahyufaturrizky/github-explorer-wahyu.git
+   ```
 
-### `npm run eject`
+2. Navigate to the project directory:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   ```
+   cd github-repo-explorer
+   ```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Install the project dependencies using npm:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   ```
+   npm install
+   ```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Usage
 
-## Learn More
+1. Start the development server:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+   ```
+   npm start
+   ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2. Open your web browser and navigate to `http://localhost:3000`.
+
+3. Enter a GitHub username in the search bar and click the "Search" button.
+
+4. The user's repositories will be listed with relevant details.
+
+## Testing
+
+This project includes unit tests to ensure its reliability and functionality. The tests are written using the Jest testing framework.
+
+To run the tests, use the following command:
+
+```
+npm test
+```
+
+## Contact
+
+For any inquiries or feedback, feel free to connect with the author on [LinkedIn](https://www.linkedin.com/in/wahyu-fatur-rizky).
+
+---
+
+Thank you for using GitHub Repo Explorer by Username. We hope this application helps you explore GitHub repositories with ease. If you encounter any issues or have suggestions for improvement, please don't hesitate to reach out to us. Happy exploring!

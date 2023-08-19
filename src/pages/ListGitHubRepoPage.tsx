@@ -127,7 +127,10 @@ const ComponentCard = (props: any) => {
               <div className="justify-between flex items-center">
                 <Text className="font-bold" label={name} />
                 <div className="flex">
-                  <Text className="font-bold mr-2" label={stargazers_count} />
+                  <Text
+                    className="font-bold mr-2"
+                    label={String(stargazers_count)}
+                  />
                   <Text className="font-bold" label="★" />
                 </div>
               </div>

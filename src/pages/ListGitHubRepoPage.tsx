@@ -1,25 +1,40 @@
-import Button from "../component/Button";
-import Input from "../component/Input";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { Inputs } from "../interface/input.interface";
-import { ReactComponent as ExpandIcon } from "../assets/expand_more.svg";
-import Text from "../component/Text";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import Accordion from "../component/Accordion";
+import Button from "../component/Button";
 import Card from "../component/Card";
+import Input from "../component/Input";
+import SkeletonList from "../component/SkeletonList";
+import Text from "../component/Text";
+import { Inputs } from "../interface/input.interface";
+import { useRepoList } from "../services/repos/useRepos";
 
 const ListGitHubRepoPage = () => {
   const { register, handleSubmit, getValues, setValue, watch } =
     useForm<Inputs>({
       defaultValues: {
-        isSearch: false,
         userName: "",
+        search: "",
       },
     });
 
+  const {
+    data: dataRepoList,
+    isLoading: isLoadingRepoList,
+    refetch: refetchRepoList,
+  } = useRepoList({
+    query: {
+      q: watch("search"),
+    },
+    options: {
+      onSuccess: () => {},
+    },
+  });
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    setValue("userName", data.userName);
-    setValue("isSearch", true);
-    console.log(data);
+    setValue("search", data.userName);
+    refetchRepoList();
   };
 
   return (
@@ -47,27 +62,82 @@ const ListGitHubRepoPage = () => {
           </div>
         </form>
 
-        {watch("isSearch") && (
+        {watch("search") && (
           <Text
             className="text-sm text-primary-gray my-4"
-            label={` Showing users for "${watch("userName")}"`}
+            label={` Showing users for "${getValues("search")}"`}
           />
         )}
 
-        <Accordion classBody="pl-4 pt-2">
-          <Card className="bg-lighter-gray p-1 mb-2">
-            <div className="justify-between flex items-center">
-              <Text className="font-bold" label="asds" />
-              <div className="flex">
-                <Text className="font-bold mr-2" label="12" />
-                <Text className="font-bold" label="★" />
-              </div>
-            </div>
+        {isLoadingRepoList ? (
+          <SkeletonList />
+        ) : (
+          dataRepoList?.data?.items?.map((data: any, index: any) => {
+            const { login, repos_url } = data;
 
-            <Text label="asds" />
-          </Card>
-        </Accordion>
+            return (
+              <Accordion
+                className="bg-light-gray px-2 py-0 rounded justify-between flex items-center hover:opacity-40 cursor-pointer mb-4"
+                labelHeader={login}
+                key={index}
+                classBody="pl-4 pt-2"
+              >
+                <ComponentCard repos_url={repos_url} />
+              </Accordion>
+            );
+          })
+        )}
       </div>
+    </div>
+  );
+};
+
+const ComponentCard = (props: any) => {
+  const [stateRepo, setStateRepo] = useState([]);
+  const [stateLoading, setStateLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchRepo = async () => {
+      try {
+        setStateLoading(true);
+        const res = await fetch(props.repos_url);
+        const resJson = await res.json();
+
+        setStateRepo(resJson);
+      } catch (error) {
+        setStateLoading(false);
+      } finally {
+        setStateLoading(false);
+      }
+    };
+
+    fetchRepo();
+  }, [props.repos_url]);
+
+  return (
+    <div>
+      {stateLoading ? (
+        <SkeletonList />
+      ) : !stateRepo.length ? (
+        <Text label="Empty repo" />
+      ) : (
+        stateRepo.map((data: any, index: any) => {
+          const { name, stargazers_count, description } = data;
+          return (
+            <Card key={index} className="bg-lighter-gray p-1 mb-2">
+              <div className="justify-between flex items-center">
+                <Text className="font-bold" label={name} />
+                <div className="flex">
+                  <Text className="font-bold mr-2" label={stargazers_count} />
+                  <Text className="font-bold" label="★" />
+                </div>
+              </div>
+
+              <Text label={description} />
+            </Card>
+          );
+        })
+      )}
     </div>
   );
 };

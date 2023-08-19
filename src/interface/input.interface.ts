@@ -2,6 +2,7 @@ import { UseFormRegister } from "react-hook-form";
 
 export type Inputs = {
   userName: string;
+  search: string;
   isSearch: boolean;
 };
 

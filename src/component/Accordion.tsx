@@ -1,18 +1,21 @@
 import { AccordionInterface } from "../interface/accordion.interface";
 import { ReactComponent as ExpandIcon } from "../assets/expand_more.svg";
+import { ReactComponent as CollapseIcon } from "../assets/expand_less.svg";
 import Text from "./Text";
+import { useState } from "react";
 
 const Accordion = (props: AccordionInterface) => {
-  const { labelHeader, children, classBody } = props;
+  const [isExpand, setIsExpand] = useState<boolean>(false);
+
+  const { labelHeader, children, classBody, className } = props;
 
   return (
     <div>
-      <div className="bg-light-gray px-2 py-0 rounded justify-between flex items-center	hover:opacity-40 cursor-pointer">
+      <div onClick={() => setIsExpand(!isExpand)} className={className}>
         <Text label={labelHeader || "Text goes here"} />
-        <ExpandIcon />
+        {isExpand ? <CollapseIcon /> : <ExpandIcon />}
       </div>
-
-      <div className={classBody}>{children}</div>
+      {isExpand && <div className={classBody}>{children}</div>}
     </div>
   );
 };

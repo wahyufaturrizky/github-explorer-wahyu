@@ -1,8 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import Input from "../../component/Input";
-import { InputInterface, Inputs } from "../../interface/input.interface";
-import { KeyboardEventHandler } from "react";
-import { UseFormRegister } from "react-hook-form";
+import { InputInterface } from "../../interface/input.interface";
 
 describe("Input component", () => {
   it("renders input correctly", () => {

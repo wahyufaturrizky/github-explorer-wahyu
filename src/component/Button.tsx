@@ -4,7 +4,7 @@ const Button = (props: ButtonInterface) => {
   const { label, type, className } = props;
 
   return (
-    <button type={type} className={className}>
+    <button data-testid="button" type={type} className={className}>
       {label || "Text goes here"}
     </button>
   );

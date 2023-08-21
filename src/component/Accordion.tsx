@@ -10,7 +10,7 @@ const Accordion = (props: AccordionInterface) => {
   const { labelHeader, children, classBody, className } = props;
 
   return (
-    <div>
+    <div data-testid="accordion">
       <div onClick={() => setIsExpand(!isExpand)} className={className}>
         <Text label={labelHeader || "Text goes here"} />
         {isExpand ? <CollapseIcon /> : <ExpandIcon />}

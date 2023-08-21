@@ -12,7 +12,7 @@ const Input = (props: InputInterface) => {
   } = props;
 
   return (
-    <div>
+    <div data-testid="input">
       {label && (
         <label
           htmlFor="email"

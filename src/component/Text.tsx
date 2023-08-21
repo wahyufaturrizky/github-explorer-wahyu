@@ -4,7 +4,7 @@ const Text = (props: TextInterface) => {
   const { label, className, onClick } = props;
 
   return (
-    <p onClick={onClick} className={className}>
+    <p data-testid="text" onClick={onClick} className={className}>
       {label || "Text goes here"}
     </p>
   );
